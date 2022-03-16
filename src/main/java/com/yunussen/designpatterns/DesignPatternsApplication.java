@@ -7,6 +7,9 @@ import factory.FactoryProvider;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import shape.Shape;
+import shape.ShapeCache;
+
 @SpringBootApplication
 public class DesignPatternsApplication implements CommandLineRunner{
 
@@ -19,6 +22,7 @@ public class DesignPatternsApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		abstractionFactoryPattern();
 		builderPattern();
+		prototypePattern();
 
 	}
 
@@ -49,5 +53,19 @@ public class DesignPatternsApplication implements CommandLineRunner{
 				.address("Fake address 1234")
 				.build();
 		System.out.println(user1);
+	}
+
+	private static void prototypePattern(){
+		//created 3 instance
+		ShapeCache.loadCache();
+
+		Shape clonedShape = (Shape) ShapeCache.getShape("1");
+		System.out.println("Shape : " + clonedShape.getType());
+
+		Shape clonedShape2 = (Shape) ShapeCache.getShape("2");
+		System.out.println("Shape : " + clonedShape2.getType());
+
+		Shape clonedShape3 = (Shape) ShapeCache.getShape("3");
+		System.out.println("Shape : " + clonedShape3.getType());
 	}
 }
