@@ -1,12 +1,8 @@
 package com.yunussen.designpatterns;
 
 import animal.Animal;
-import animal.Bear;
-import animal.Dog;
+import builder.User;
 import color.Color;
-import color.Red;
-import color.Yellow;
-import factory.AbstractFactory;
 import factory.FactoryProvider;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +18,7 @@ public class DesignPatternsApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		abstractionFactoryPattern();
+		builderPattern();
 
 	}
 
@@ -43,5 +40,14 @@ public class DesignPatternsApplication implements CommandLineRunner{
 		//get yellow instance
 		Color yellow =(Color) FactoryProvider.getFactory("color").newInstance("yellow");
 		System.out.println("color of created instance which: "+yellow.getColor());
+	}
+
+	private static void builderPattern(){
+		User user1 = new User.UserBuilder("Yunus", "Şen")
+				.age(24)
+				.phone("1234567")
+				.address("Fake address 1234")
+				.build();
+		System.out.println(user1);
 	}
 }
