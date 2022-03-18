@@ -8,7 +8,8 @@
 		<module>pattern/creational/builder</module>
 		<module>pattern/creational/prototype</module>
         <module>pattern/creational/singleton</module>
-    </modules>
+		<module>pattern/structural/adapter</module>
+	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -60,6 +61,12 @@
 		<dependency>
 			<groupId>com.yunussen</groupId>
 			<artifactId>singleton-pattern</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.yunussen</groupId>
+			<artifactId>adapter-pattern</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
