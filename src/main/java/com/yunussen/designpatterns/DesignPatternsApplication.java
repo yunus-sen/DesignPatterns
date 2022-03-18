@@ -4,6 +4,7 @@ import adapter.XCodeAdapter;
 import animal.Animal;
 import builder.User;
 import code.XCode;
+import color.BridgeRed;
 import color.Color;
 import crypt.ACrypt;
 import crypt.BCrypt;
@@ -12,6 +13,8 @@ import factory.FactoryProvider;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import shape.BridgeShape;
+import shape.BridgeSquare;
 import shape.Shape;
 import shape.ShapeCache;
 import singleton.SingletonClass;
@@ -32,6 +35,7 @@ public class DesignPatternsApplication implements CommandLineRunner {
         prototypePattern();
         singletonPattern();
         adapterPattern();
+        bridgePattern();
     }
 
     private static void abstractionFactoryPattern() {
@@ -118,5 +122,11 @@ public class DesignPatternsApplication implements CommandLineRunner {
         Crypt xCodeAdapter = new XCodeAdapter(xCode);
         xCodeAdapter.encrypt("yunus");
         xCodeAdapter.decrypt("yunus");
+    }
+
+    private static void bridgePattern() {
+        System.out.println("-------BRIDGE PATTERN-------");
+        BridgeShape square = new BridgeSquare(new BridgeRed());
+        System.out.println(square.draw());
     }
 }
