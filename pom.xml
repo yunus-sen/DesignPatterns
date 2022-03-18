@@ -10,6 +10,7 @@
         <module>pattern/creational/singleton</module>
 		<module>pattern/structural/adapter</module>
 		<module>pattern/structural/bridge</module>
+		<module>pattern/structural/composite</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -76,6 +77,11 @@
 			<artifactId>bridge-pattern</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.yunussen</groupId>
+			<artifactId>composite-pattern</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

@@ -9,6 +9,10 @@ import color.Color;
 import crypt.ACrypt;
 import crypt.BCrypt;
 import crypt.Crypt;
+import department.Department;
+import department.FinancialDepartment;
+import department.HeadDepartment;
+import department.SalesDepartment;
 import factory.FactoryProvider;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -36,6 +40,7 @@ public class DesignPatternsApplication implements CommandLineRunner {
         singletonPattern();
         adapterPattern();
         bridgePattern();
+        compositePattern();
     }
 
     private static void abstractionFactoryPattern() {
@@ -128,5 +133,21 @@ public class DesignPatternsApplication implements CommandLineRunner {
         System.out.println("-------BRIDGE PATTERN-------");
         BridgeShape square = new BridgeSquare(new BridgeRed());
         System.out.println(square.draw());
+    }
+
+    private static void compositePattern() {
+        System.out.println("-------COMPOSITE PATTERN-------");
+
+        Department salesDepartment = new SalesDepartment(
+                1, "Sales department");
+        Department financialDepartment = new FinancialDepartment(
+                2, "Financial department");
+        HeadDepartment headDepartment = new HeadDepartment(
+                3, "Head department");
+
+        headDepartment.addDepartment(salesDepartment);
+        headDepartment.addDepartment(financialDepartment);
+
+        headDepartment.printDepartmentName();
     }
 }
