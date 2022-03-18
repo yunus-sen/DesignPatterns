@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import shape.Shape;
 import shape.ShapeCache;
+import singleton.SingletonClass;
+import singleton.SingletonClassEagerInstance;
 
 @SpringBootApplication
 public class DesignPatternsApplication implements CommandLineRunner{
@@ -23,7 +25,7 @@ public class DesignPatternsApplication implements CommandLineRunner{
 		abstractionFactoryPattern();
 		builderPattern();
 		prototypePattern();
-
+		singletonPattern();
 	}
 
 	private static void abstractionFactoryPattern(){
@@ -60,12 +62,33 @@ public class DesignPatternsApplication implements CommandLineRunner{
 		ShapeCache.loadCache();
 
 		Shape clonedShape = (Shape) ShapeCache.getShape("1");
-		System.out.println("Shape : " + clonedShape.getType());
+		System.out.println("Shape : " + clonedShape.getType()+clonedShape.getId());
 
 		Shape clonedShape2 = (Shape) ShapeCache.getShape("2");
 		System.out.println("Shape : " + clonedShape2.getType());
 
 		Shape clonedShape3 = (Shape) ShapeCache.getShape("3");
 		System.out.println("Shape : " + clonedShape3.getType());
+	}
+
+	private static void singletonPattern(){
+
+		//Singleton Example
+		SingletonClass singletonExample1 = SingletonClass.getInstance();
+		SingletonClass singletonExample2 = SingletonClass.getInstance();
+
+		System.out.println("singletonExample1 ==> " + singletonExample1);
+		System.out.println("singletonExample2 ==> " + singletonExample2);
+
+		System.out.println(singletonExample1 == singletonExample2);
+
+		//Singleton Example Eager Initialization
+		SingletonClassEagerInstance singletonExampleEagerInitialization1 = SingletonClassEagerInstance.getInstance();
+		SingletonClassEagerInstance singletonExampleEagerInitialization2 = SingletonClassEagerInstance.getInstance();
+
+		System.out.println("singletonExampleEagerInitialization1 ==> " + singletonExampleEagerInitialization1);
+		System.out.println("singletonExampleEagerInitialization2 ==> " + singletonExampleEagerInitialization2);
+
+		System.out.println(singletonExampleEagerInitialization1 == singletonExampleEagerInitialization2);
 	}
 }
