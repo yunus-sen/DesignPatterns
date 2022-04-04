@@ -6,9 +6,12 @@ import builder.User;
 import code.XCode;
 import color.BridgeRed;
 import color.Color;
+import component.ChristmasTree;
+import component.ChristmasTreeImpl;
 import crypt.ACrypt;
 import crypt.BCrypt;
 import crypt.Crypt;
+import decarator.BubbleLights;
 import department.Department;
 import department.FinancialDepartment;
 import department.HeadDepartment;
@@ -41,6 +44,7 @@ public class DesignPatternsApplication implements CommandLineRunner {
         adapterPattern();
         bridgePattern();
         compositePattern();
+        decaratorPattern();
     }
 
     private static void abstractionFactoryPattern() {
@@ -149,5 +153,12 @@ public class DesignPatternsApplication implements CommandLineRunner {
         headDepartment.addDepartment(financialDepartment);
 
         headDepartment.printDepartmentName();
+    }
+
+    private static void decaratorPattern(){
+        System.out.println("-------DECARATOR PATTERN-------");
+        ChristmasTree tree1 = new BubbleLights(new ChristmasTreeImpl());
+        //expected: Christmas tree with Bubble Lights
+        System.out.println(tree1.decorate());
     }
 }
