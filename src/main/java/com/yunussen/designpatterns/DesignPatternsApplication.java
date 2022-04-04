@@ -8,6 +8,7 @@ import color.BridgeRed;
 import color.Color;
 import component.ChristmasTree;
 import component.ChristmasTreeImpl;
+import component.Customer;
 import crypt.ACrypt;
 import crypt.BCrypt;
 import crypt.Crypt;
@@ -16,6 +17,7 @@ import department.Department;
 import department.FinancialDepartment;
 import department.HeadDepartment;
 import department.SalesDepartment;
+import facade.Facade;
 import factory.FactoryProvider;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +28,8 @@ import shape.Shape;
 import shape.ShapeCache;
 import singleton.SingletonClass;
 import singleton.SingletonClassEagerInstance;
+
+import java.math.BigDecimal;
 
 @SpringBootApplication
 public class DesignPatternsApplication implements CommandLineRunner {
@@ -45,6 +49,7 @@ public class DesignPatternsApplication implements CommandLineRunner {
         bridgePattern();
         compositePattern();
         decaratorPattern();
+        facadePattern();
     }
 
     private static void abstractionFactoryPattern() {
@@ -155,10 +160,20 @@ public class DesignPatternsApplication implements CommandLineRunner {
         headDepartment.printDepartmentName();
     }
 
-    private static void decaratorPattern(){
+    private static void decaratorPattern() {
         System.out.println("-------DECARATOR PATTERN-------");
         ChristmasTree tree1 = new BubbleLights(new ChristmasTreeImpl());
         //expected: Christmas tree with Bubble Lights
         System.out.println(tree1.decorate());
+    }
+
+    private static void facadePattern() {
+        System.out.println("-------FACADE PATTERN-------");
+        Facade fcd = new Facade();
+        Customer customer1 = new Customer();
+        customer1.setCustomerId(123);
+        customer1.setIdentityNo("1234");
+        customer1.setName("yunus");
+        fcd.useCredit(customer1, BigDecimal.valueOf(1000));
     }
 }
